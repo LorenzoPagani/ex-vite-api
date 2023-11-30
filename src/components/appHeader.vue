@@ -4,8 +4,12 @@ export default {
 }
 </script>
 <template>
-    <header class="d-flex justify-content-center p-3 bg-warning">
+    <header class="d-flex justify-content-center align-items-center p-3 bg-warning">
         <h1>{{ title }}</h1>
     </header>
 </template>
-<script></script>
+<style scoped>
+header {
+    height: 10vh;
+}
+</style>
