@@ -12,7 +12,8 @@ export default {
                     <div v-for="brewery in data" class="card text-white">
                         <div class="card-body">
                             <h5 class="card-title">{{ brewery.name }}</h5>
-                            <p class="card-text">{{ brewery.address_1 }}, {{ brewery.city }}</p>
+                            <p class="card-text">{{ brewery.address_1 }}</p>
+                            <h6 class="card-text">{{ brewery.city }}</h6>
                         </div>
                     </div>
                 </div>
@@ -32,6 +33,7 @@ main {
 
 .card {
     width: calc(100% / 5 - 2rem);
+    aspect-ratio: 2 / 1;
     margin: 1rem;
     background-color: #00995E;
     border: 2px solid #F7843C;
