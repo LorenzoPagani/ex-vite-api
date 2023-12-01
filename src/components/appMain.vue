@@ -1,13 +1,23 @@
 <script>
+import brewerySelect from '../components/brewerySelect.vue'
+
 export default {
+    components: {
+        brewerySelect
+
+    },
     name: "appMain",
-    props: ["data"]
+    props: ["data", "changeBrewery", "nextPage", "prevPage"],
+
 }
 </script>
 <template>
     <main>
         <div class="container">
             <div class="row">
+                <div class="col-12">
+                    <brewerySelect @nextPage="nextPage" @prevPage="prevPage" @choice="changeBrewery" />
+                </div>
                 <div class="col-12 d-flex flex-wrap">
                     <div v-for="brewery in data" class="card text-white">
                         <div class="card-body">
@@ -27,7 +37,7 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 110vh;
+    height: 90vh;
     padding-top: 3rem;
 }
 
