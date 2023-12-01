@@ -21,10 +21,14 @@ export default {
                     <option value="brewpub">brewpub</option>
                     <option value="large">large</option>
                 </select>
-                <button @click="$emit('prevPage')">previous</button>
-                <button @click="$emit('nextPage')">next</button>
+                <button class="btn btn-success mx-1" @click="$emit('prevPage')">previous</button>
+                <button class="btn btn-success mx-1" @click="$emit('nextPage')">next</button>
             </div>
         </div>
     </div>
 </template>
-<style scoped></style>
+<style scoped>
+.btn {
+    border: 2px solid #F7843C;
+}
+</style>
