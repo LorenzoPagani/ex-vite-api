@@ -15,38 +15,34 @@ export default {
     }
   },
   methods: {
+    getData(page) {
+      axios.get(`https://api.openbrewerydb.org/v1/breweries?by_country=ireland&by_type=${store.breweryType}&page=${page}&per_page=10`).then(resp => {
+        if (resp.data.length) {
+          store.beerList = []
+          store.pageCounter = page;
+          store.beerList.push(...resp.data)
 
-    getBreweries() {
-      store.beerList = []
-      axios.get(`https://api.openbrewerydb.org/v1/breweries?by_country=ireland&by_type=${store.breweryType}&page=${store.pageCounter}&per_page=10`).then(resp => {
-        store.beerList.push(...resp.data)
-        console.log(resp)
+        }
       })
     },
+    getBreweries() {
+      this.getData(1)
+    },
     nextPage() {
-      store.pageCounter++;
-      this.getBreweries()
-      console.log(store.beerList)
-      console.log(store.pageCounter)
-
+      this.getData(store.pageCounter + 1)
     },
     prevPage() {
-      if (store.pageCounter > 1) {
-        store.pageCounter--;
-        this.getBreweries()
-        console.log(store.pageCounter)
-      }
+      this.getData(store.pageCounter - 1)
     }
   },
   mounted() {
-    this.getBreweries()
+
   }
 }
 </script>
 
 <template>
   <appHeader title="Breweries of Ireland" />
-
   <appMain :nextPage="nextPage" :prevPage="prevPage" :changeBrewery="getBreweries" :data="store.beerList"></appMain>
 </template>
 

@@ -21,7 +21,8 @@ export default {
                     <option value="brewpub">brewpub</option>
                     <option value="large">large</option>
                 </select>
-                <button class="btn btn-success mx-1" @click="$emit('prevPage')">previous</button>
+                <button v-if="store.pageCounter > 1" class="btn btn-success mx-1"
+                    @click="$emit('prevPage')">previous</button>
                 <button class="btn btn-success mx-1" @click="$emit('nextPage')">next</button>
             </div>
         </div>
